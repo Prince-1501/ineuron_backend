@@ -13,4 +13,4 @@ NOTE:
 2. Upload your project to GitHub and change the visibility to PUBLIC for submission.
 
 To access the API documentation
-### /apo-docs
+### /api-docs
