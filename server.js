@@ -11,6 +11,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+let baseUrl = `http://localhost:${process.env.PORT}`;
+if(process.env.ENVIRONMENT === 'production')
+    baseUrl = process.env.VERCEL_URL;
+
 const options = {
     swaggerDefinition: {
       openapi: '3.0.0',
@@ -19,7 +24,7 @@ const options = {
         version: '1.0.0',
         description: 'This is a simple Products API for demonstration purposes.',
       },
-      basePath: 'http://localhost:3000',
+      basePath: baseUrl,
     },
     apis: ['./api-docs.yml'],
   };
@@ -29,8 +34,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 
 app.get('/', (req, res) => {
-    const baseUrl = process.env.VERCEL_URL;
-    console.log(`baseUrl ${baseUrl}`);
     res.send("welcome to Ineuron Backend Assignment");
 });
 
