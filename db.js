@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const username = process.env.USERNAME
 const password = process.env.PASSWORD
 
-console.log(`username: ${username}`);
-
 // const url = 'mongodb://localhost:27017/db';
 const url = `mongodb+srv://${username}:${password}@products.prfoq7j.mongodb.net/?retryWrites=true&w=majority`;
 

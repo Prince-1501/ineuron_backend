@@ -29,6 +29,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 
 app.get('/', (req, res) => {
+    const baseUrl = process.env.VERCEL_URL;
+    console.log(`baseUrl ${baseUrl}`);
     res.send("welcome to Ineuron Backend Assignment");
 });
 
