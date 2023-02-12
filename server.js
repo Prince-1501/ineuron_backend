@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const productHelper = require('./helper/product_helper.js');
 
@@ -17,8 +19,7 @@ const options = {
         version: '1.0.0',
         description: 'This is a simple Products API for demonstration purposes.',
       },
-      // basePath: 'http://localhost:3000',
-      basePath: 'https://ineuron-backend-5dpekm446-prince-1501.vercel.app',
+      basePath: 'http://localhost:3000',
     },
     apis: ['./api-docs.yml'],
   };
@@ -93,5 +94,5 @@ app.put('/update/:id', async(req, res) => {
     }
 });
 
-const port = 3000;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Backend server is LIVE and running on port ${port}`));

@@ -1,12 +1,24 @@
 // import mongoose from 'mongoose';
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/db', {
+const username = process.env.USERNAME
+const password = process.env.PASSWORD
+
+// const url = 'mongodb://localhost:27017/db';
+const url = `mongodb+srv://${username}:${password}@products.prfoq7j.mongodb.net/?retryWrites=true&w=majority`;
+
+const connectionParams = {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).catch((error) => {
-  console.error(error.message);
-});
+  useUnifiedTopology: true 
+};
+
+mongoose.connect(url, connectionParams)
+.then( () => {
+  console.log('Connected to the database ')
+})
+.catch( (err) => {
+  console.error(`Error connecting to the database. n${err}`);
+})
 
 const productsSchema = new mongoose.Schema({
   name: {
