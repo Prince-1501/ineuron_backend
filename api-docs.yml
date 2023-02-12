@@ -1,0 +1,123 @@
+swagger: '2.0'
+info:
+  title: Products API
+  version: '1.0.0'
+  description: 'This is a simple Products API for demonstration purposes.'
+basePath: 'http://localhost:3000'
+paths:
+  /products:
+    get:
+      description: Returns a list of all products
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+  /find/{id}:
+    get:
+      description: Returns a single product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/Product'
+  /add:
+    post:
+      description: Adds a new product
+      parameters:
+        - in: body
+          name: Product
+          description: The product to add
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        201:
+          description: Success
+          schema:
+            $ref: '#/definitions/Product'
+        400:
+          description: Bad Request
+        500:
+          description: Internal Server Error
+  /delete/{id}:
+    delete:
+      description: Deletes a product by ID
+      parameters:
+        - in: path
+          name: id
+          description: ID of the product to delete
+          type: string
+          required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Success message
+        404:
+          description: Product not found
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Error message
+  /update/{id}:
+    put:
+      description: Updates a product by ID
+      parameters:
+        - in: path
+          name: id
+          description: ID of the product to update
+          type: string
+          required: true
+        - in: body
+          name: product
+          description: Product data to update
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/Product'
+        404:
+          description: Product not found
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Error message
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier for the product.
+      name:
+        type: string
+        description: The name of the product.
+      description:
+        type: string
+        description: A brief description of the product.
+      price:
+        type: number
+        description: The price of the product.
+      createdAt:
+        type: string
+        format: date-time
+        description: The date and time the product was created.
