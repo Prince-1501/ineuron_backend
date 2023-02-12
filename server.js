@@ -17,7 +17,8 @@ const options = {
         version: '1.0.0',
         description: 'This is a simple Products API for demonstration purposes.',
       },
-      basePath: 'http://localhost:3000',
+      // basePath: 'http://localhost:3000',
+      basePath: 'https://ineuron-backend-5dpekm446-prince-1501.vercel.app',
     },
     apis: ['./api-docs.yml'],
   };
