@@ -11,3 +11,6 @@ Dockerise the solution and deploy it to some cloud service provider using CI/CD 
 NOTE: 
 1. Strictly use typescript to code the assignment.
 2. Upload your project to GitHub and change the visibility to PUBLIC for submission.
+
+To access the API documentation
+### /apo-docs
