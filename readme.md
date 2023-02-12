@@ -14,3 +14,5 @@ NOTE:
 
 To access the API documentation
 ### /api-docs
+
+### https://ineuron-backend-e8h70aq2w-prince-1501.vercel.app/products
