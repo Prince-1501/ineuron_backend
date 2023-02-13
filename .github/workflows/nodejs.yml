@@ -22,3 +22,6 @@ jobs:
 
     - name: Run tests
       run: npm run test
+      env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
