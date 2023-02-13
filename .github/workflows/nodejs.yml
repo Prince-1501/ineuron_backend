@@ -1,4 +1,4 @@
-name: Node.js CI
+name: run api testing
 
 on:
   push:
@@ -18,14 +18,7 @@ jobs:
         node-version: '14.x'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm install
 
     - name: Run tests
       run: npm run test
-
-    - name: Approve and merge changes
-      if: ${{ success() }}
-      uses: "peter-evans/approval-action@v2.2.0"
-      with:
-        sha: ${{ github.sha }}
-        pull-request-title: "Automatically approved and merged"
